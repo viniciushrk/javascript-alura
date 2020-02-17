@@ -9,7 +9,7 @@ botaoAdicionar.addEventListener("click", function(event) {
     console.log(paciente);
     //cria a tr a td paciente
 
-    var pacienteTr =  montaTr(paciente);
+
 
     var erros = validaPaciente(paciente);
      console.log(erros);
@@ -19,13 +19,18 @@ botaoAdicionar.addEventListener("click", function(event) {
     }
     // console.log(pacienteTr);
 
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    adicionaPacienteNaTabela(paciente);
 
     form.reset();
     var ul =document.querySelector("#mensagens-erro");
     ul.innerHTML = "";
 });
+
+function adicionaPacienteNaTabela(paciente) {
+    var pacienteTr =  montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
 
 function obtemPacienteFormulario(form) {
 
@@ -37,6 +42,7 @@ function obtemPacienteFormulario(form) {
         imc:calculaImc(form.peso.value,form.altura.value)
     };
     return paciente;
+
 }
 
 function montaTr(paciente) {
